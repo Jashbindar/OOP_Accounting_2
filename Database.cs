@@ -35,5 +35,21 @@ namespace OOP_Accounting
             Console.WriteLine("User detail with email {0} saved successfully", userDetail.Email);
             await documentRef.SetAsync(user);
         }
+
+        public async Task<List<UserAccount>> getUserDetail()
+        {
+            var userAccounts = new List<UserAccount>();
+            Query collectionQuery = database.Collection("User_Transaction");
+            QuerySnapshot querySnapshots = await collectionQuery.GetSnapshotAsync();
+
+            foreach (DocumentSnapshot document in querySnapshots.Documents)
+            {
+                var data = document.ToDictionary();
+                double amount = double.Parse(data["Amount"].ToString());
+                var account = new UserAccount(amount);
+                userAccounts.Add(account);
+            }
+            return userAccounts;
+        }
     }
 }

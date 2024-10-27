@@ -29,7 +29,7 @@ namespace OOP_Accounting
             Console.WriteLine("4. View Transaction History");
             Console.WriteLine("5. Remove Income");
             Console.WriteLine("6. Remove Expense");
-            Console.WriteLine("7. Quit\n");
+            Console.WriteLine("7. Quit\n");     
         }
     }
 }

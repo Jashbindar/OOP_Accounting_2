@@ -15,6 +15,7 @@ namespace OOP_Accounting
 
         private List<TransactionIncome> Incomes = new List<TransactionIncome>();
         private List<TransactionExpense> Expenses = new List<TransactionExpense>();
+        private double amount;
 
         public UserAccount() { }
         public UserAccount(string name, int age, UserDetail userDetail) : base (name, age)
@@ -27,16 +28,22 @@ namespace OOP_Accounting
             User_Details = new UserDetail();
         }
         public UserAccount(string name) : base(name) { }
+
+        public UserAccount(double amount)
+        {
+            this.amount = amount;
+        }
+
         public void addIncome(TransactionIncome income)
         {
             Incomes.Add(income);
-            Console.WriteLine("Income transacion of RM{0} made on {1} has been added!", income.getIncome(), income.getDate_of_income());
+            Console.WriteLine("Income transaction of RM{0} made on {1} has been added!", income.getIncome(), income.getDate_of_income());
         }
 
         public void removeIncome(TransactionIncome income)
         {
             Incomes.Remove(income);
-            Console.WriteLine("Income transacion of RM{0} made on {1} has been removed!", income.getIncome(), income.getDate_of_income());
+            Console.WriteLine("Income transaction of RM{0} made on {1} has been removed!", income.getIncome(), income.getDate_of_income());
         }
 
         public TransactionIncome findIdOfTransactionIncome(int transaction_index)
